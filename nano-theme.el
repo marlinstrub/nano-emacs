@@ -96,7 +96,8 @@ background color that is barely perceptible."
 
 (set-face-attribute 'default nil
                     :foreground (face-foreground 'default)
-                    :background (face-background 'default))
+                    :background (face-background 'default)
+                    :weight 'light)
 (set-face-attribute 'nano-face-default nil
                     :foreground (face-foreground 'default)
                     :background (face-background 'default))
