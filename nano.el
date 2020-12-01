@@ -25,8 +25,8 @@
 ;; (require 'nano-theme-dark)
 (require 'nano-theme-light)
 (require 'nano-modeline)
-(require 'nano-help)
-(require 'nano-splash)
+;; (require 'nano-help)
+;; (require 'nano-splash)
 
 
 (provide 'nano)
