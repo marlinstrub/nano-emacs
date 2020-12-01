@@ -73,9 +73,12 @@
                 (propertize " " 'display `(raise ,space-up))
                 (propertize name 'face 'nano-face-strong)
                 (propertize " " 'display `(raise ,space-down)) primary))
-         (right secondary)
+         (right (concat secondary " "))
 ;;         (available-width (- (window-total-width nil 'floor) (length left) 1)))
-         (available-width (- (window-body-width) (length left) pad)))
+         (available-width (- (+ (window-width)
+                                (if (car (window-margins)) (car (window-margins)) 0)
+                                (if (cdr (window-margins)) (cdr (window-margins)) 0))
+                             (length left))))
     (format (format "%%s%%%ds" available-width) left right)))
 
 ;; ---------------------------------------------------------------------
