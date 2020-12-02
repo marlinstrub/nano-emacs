@@ -347,6 +347,13 @@
            (t                                      (nano-modeline-default-mode)))))))
 
 ;; ---------------------------------------------------------------------
+(set-face-attribute 'mode-line nil
+                    :height 11
+                    :underline (face-foreground 'nano-face-faded)
+                    :overline nil
+                    :box nil)
+(set-face 'mode-line-inactive 'mode-line)
+
 (defun nano-modeline-update-windows ()
   "Modify the mode line depending on the presence of a window below."
   
