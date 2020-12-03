@@ -15,18 +15,20 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;; ---------------------------------------------------------------------
+(require 'nano-colors)
+
 (setq frame-background-mode   'light)
 
 ;; Colors from Material design at https://material.io/
-(defvar nano-color-foreground "#37474F") ;; Blue Grey / L800 
-(defvar nano-color-background "#FFFFFF") ;; White
-(defvar nano-color-highlight  "#FAFAFA") ;; Very Light Grey
-(defvar nano-color-critical   "#FF6F00") ;; Amber / L900
-(defvar nano-color-salient    "#673AB7") ;; Deep Purple / L500
-(defvar nano-color-strong     "#000000") ;; Black
-(defvar nano-color-popout     "#FFAB91") ;; Deep Orange / L200
-(defvar nano-color-subtle     "#ECEFF1") ;; Blue Grey / L50
-(defvar nano-color-faded      "#B0BEC5") ;; Blue Grey / L200
+(defvar nano-color-foreground (material-color "blue-grey 8"  ))
+(defvar nano-color-background "#FFFFFF"                       ) ;; White
+(defvar nano-color-highlight  "#FAFAFA"                       ) ;; Very light grey
+(defvar nano-color-critical   (material-color "amber 9"      ))
+(defvar nano-color-salient    (material-color "indigo 7"     ))
+(defvar nano-color-strong     "#000000"                       ) ;; Black
+(defvar nano-color-popout     (material-color "deep-orange 2"))
+(defvar nano-color-subtle     (material-color "blue-grey 0"  ))
+(defvar nano-color-faded      (material-color "blue-grey 2"  ))
 
 (require 'nano-theme)
-(provide 'nano-theme-light)
+(provide 'nano-theme-material-light)

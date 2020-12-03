@@ -15,18 +15,20 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;; ---------------------------------------------------------------------
+(require 'nano-colors)
+
 (setq frame-background-mode   'dark)
 
 ;; Colors from Nord theme at https://www.nordtheme.com
-(defvar nano-color-foreground "#ECEFF4") ;; Snow Storm 3  / nord  6
-(defvar nano-color-background "#2E3440") ;; Polar Night 0 / nord  0
-(defvar nano-color-highlight  "#3B4252") ;; Polar Night 1 / nord  1
-(defvar nano-color-critical   "#EBCB8B") ;; Aurora        / nord 11
-(defvar nano-color-salient    "#81A1C1") ;; Frost         / nord  9
-(defvar nano-color-strong     "#ECEFF4") ;; Snow Storm 3  / nord  6
-(defvar nano-color-popout     "#D08770") ;; Aurora        / nord 12
-(defvar nano-color-subtle     "#434C5E") ;; Polar Night 2 / nord  2
-(defvar nano-color-faded      "#616E87") ;; 
+(defvar nano-color-foreground (nord-color "snow-storm 3" )) ;; nord  6
+(defvar nano-color-background (nord-color "polar-night 0")) ;; nord  0
+(defvar nano-color-highlight  (nord-color "polar-night 1")) ;; nord  1
+(defvar nano-color-critical   (nord-color "aurora 2"     )) ;; nord 11
+(defvar nano-color-salient    (nord-color "frost 2"      )) ;; nord  9
+(defvar nano-color-strong     (nord-color "snow-storm 3" )) ;; nord  6
+(defvar nano-color-popout     (nord-color "aurora 1"     )) ;; nord 12
+(defvar nano-color-subtle     (nord-color "polar-night 2")) ;; nord  2
+(defvar nano-color-faded      "#616E87"                   ) ;; 
 
 (require 'nano-theme)
-(provide 'nano-theme-dark)
+(provide 'nano-theme-nord-dark)
