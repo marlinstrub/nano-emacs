@@ -38,13 +38,13 @@
 ;; defaults write org.gnu.Emacs AppleFontSmoothing -int 2 (medium)
 ;; defaults write org.gnu.Emacs AppleFontSmoothing -int 3 (strong)
 
-;; Fall back font for glyph missing in Roboto
-(defface fallback '((t :family "Fira Code"
-                       :inherit 'nano-face-faded)) "Fallback")
-(set-display-table-slot standard-display-table 'truncation
-                        (make-glyph-code ?… 'fallback))
-(set-display-table-slot standard-display-table 'wrap
-                         (make-glyph-code ?↩ 'fallback))
+;; ;; Fall back font for glyph missing in Roboto
+;; (defface fallback '((t :family "Fira Code"
+;;                        :inherit 'nano-face-faded)) "Fallback")
+;; (set-display-table-slot standard-display-table 'truncation
+;;                         (make-glyph-code ?… 'fallback))
+;; (set-display-table-slot standard-display-table 'wrap
+;;                          (make-glyph-code ?↩ 'fallback))
 
 ;; Fix bug on OSX in term mode & zsh (spurious % after each command)
 (add-hook 'term-mode-hook
