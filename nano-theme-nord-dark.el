@@ -1,6 +1,7 @@
+;;; package --- summary
 ;; ---------------------------------------------------------------------
 ;; GNU Emacs / N Λ N O - Emacs made simple
-;; Copyright (C) 2020 - N Λ N O developers 
+;; Copyright (C) 2020 - N Λ N O developers
 ;;
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -15,11 +16,14 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;; ---------------------------------------------------------------------
+;;; Commentary:
+;;; Code:
 (require 'nano-colors)
 (require 'nano-theme)
 
 ;; Colors from Nord theme at https://www.nordtheme.com
 (defun nano-theme-nord-dark ()
+  "Activate the dark nord theme."
   (interactive)
   ;; This is a dark theme.
   (setq frame-background-mode   'dark)
@@ -47,3 +51,4 @@
   (set-face 'mode-line-inactive 'mode-line))
 
 (provide 'nano-theme-nord-dark)
+;;; nano-theme-nord-dark ends here

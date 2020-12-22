@@ -1,6 +1,8 @@
+;;; package --- summary
+;;; Commentary:
 ;; -------------------------------------------------------------------
 ;; GNU Emacs / N Λ N O - Emacs made simple
-;; Copyright (C) 2020 - N Λ N O developers 
+;; Copyright (C) 2020 - N Λ N O developers
 ;;
 ;; This file is not part of GNU Emacs.
 ;;
@@ -15,7 +17,7 @@
 ;; General Public License for more details.
 ;;
 ;; You should have received a copy of the GNU General Public License
-;; along with this program. If not, see <http://www.gnu.org/licenses/>
+;; along with this program.  If not, see <http://www.gnu.org/licenses/>
 ;; -------------------------------------------------------------------
 ;;
 ;; Nano mode line format:
@@ -23,6 +25,9 @@
 ;; [ status | name | primary                               secondary ]
 ;;
 ;; -------------------------------------------------------------------
+
+;;; Code:
+
 (require 'subr-x)
 ;; (require 'all-the-icons)
 
@@ -263,7 +268,7 @@
   (derived-mode-p 'pdf-view-mode))
 
 (defun nano-modeline-pdf-pages ()
-  (concat " P" (number-to-string (eval '(pdf-view-current-page))) "/" (or (ignore-errors (number-to-string (eval '(pdf-cache-number-of-pages)))) "???")))
+  (concat " Page " (number-to-string (eval '(pdf-view-current-page))) " of " (or (ignore-errors (number-to-string (eval '(pdf-cache-number-of-pages)))) "???")))
 
 (defun nano-modeline-pdf-view-mode ()
   (let ((buffer-name (format-mode-line "%b"))
@@ -311,11 +316,12 @@
 
 ;; ---------------------------------------------------------------------
 (defun nano-modeline-status ()
-  "Return buffer status: read-only (RO), modified (**) or read-write (RW)"
-  
-  (let ((read-only   buffer-read-only)
-        (modified    (and buffer-file-name (buffer-modified-p))))
-    (cond (modified  "**") (read-only "RO") (t "RW"))))
+  "Return buffer status: read-only (RO), modified (**) or read-write (RW)."
+    (let ((read-only   buffer-read-only)
+          (modified    (and buffer-file-name (buffer-modified-p))))
+      (cond (modified  "**")
+            (read-only "RO")
+            (t "RW"))))
   
 ;; ---------------------------------------------------------------------
 (defun nano-modeline-mu4e-context ()

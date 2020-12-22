@@ -1,6 +1,7 @@
+;;; package --- summary
 ;; ---------------------------------------------------------------------
 ;; GNU Emacs / N Λ N O - Emacs made simple
-;; Copyright (C) 2020 - N Λ N O developers 
+;; Copyright (C) 2020 - N Λ N O developers
 ;;
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -15,13 +16,10 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program. If not, see <http://www.gnu.org/licenses/>.
 ;; ---------------------------------------------------------------------
-(setq package-user-dir "~/.emacs.d/packages")
-(setq package-archives '(("melpa" . "https://melpa.org/packages/")
-                         ("gnu"   . "http://elpa.gnu.org/packages/")))
-(package-initialize)
-(add-to-list 'load-path ".")
-
+;;; Commentary:
+;;; Code:
 (require 'nano-layout)
+(require 'nano-theme)
 (require 'nano-theme-kimbie-dark)
 (require 'nano-theme-material-light)
 (require 'nano-theme-nord-dark)
@@ -35,3 +33,4 @@
 
 
 (provide 'nano)
+;;; nano.el ends here
