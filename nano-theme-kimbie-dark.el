@@ -54,5 +54,5 @@
                       :box nil)
   (set-face 'mode-line-inactive 'mode-line))
 
-(provide 'nano-theme-nord-dark)
+(provide 'nano-theme-kimbie-dark)
 ;;; nano-theme-kimbie-dark.el ends here

@@ -45,4 +45,4 @@
                       :box nil)
   (set-face 'mode-line-inactive 'mode-line))
 
-(provide 'nano-theme-material-light)
+(provide 'nano-theme-solarized-light)
