@@ -352,6 +352,6 @@ function is a convenience wrapper used by `describe-package-1'."
                                   :background nano-color-subtle)
                          'link)))
       (apply #'insert-text-button button-text
-             'face button-face 'follow-link t properties))))
+             'face button-face 'follow-link t properties)))
 
 (provide 'nano-theme)
