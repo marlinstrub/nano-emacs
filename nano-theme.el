@@ -211,6 +211,9 @@ background color that is barely perceptible."
                       :background (face-background 'nano-face-subtle)
                       :overline nil
                       :underline nil
+                      :box `(:line-width 1
+                                          :color ,(face-background 'nano-face-default)
+                                          :style nil)
 		                  :inherit nil)
   ;; (when (not (display-graphic-p))
   ;;   (set-face-attribute 'header-line nil
