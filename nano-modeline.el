@@ -348,7 +348,7 @@
 
 ;; ---------------------------------------------------------------------
 (set-face-attribute 'mode-line nil
-                    :height 11
+                    :height 1
                     :underline (face-foreground 'nano-face-faded)
                     :overline nil
                     :box nil)

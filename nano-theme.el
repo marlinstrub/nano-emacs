@@ -141,18 +141,18 @@ background color that is barely perceptible."
 
   ;; mode-line / header-line
   (set-face-attribute 'mode-line nil
-                      :height 0.75
+                      :height 1
                       :foreground (face-foreground 'nano-face-faded)
                       :background (face-background 'nano-face-default)
                       :overline nil
-		                  :underline nil
+		                  :underline (face-foreground 'nano-face-faded)
 		                  :box nil)
   (set-face-attribute 'mode-line-inactive nil
-                      :height 0.75
+                      :height 1
                       :foreground (face-foreground 'nano-face-faded)
                       :background (face-background 'nano-face-default)
                       :overline nil 
-                      :underline nil
+                      :underline (face-foreground 'nano-face-faded)
 		                  :inherit nil
                       :box nil)
   ;;(when (display-graphic-p)
@@ -162,10 +162,6 @@ background color that is barely perceptible."
                       :background (face-background 'nano-face-subtle)
                       :overline nil
                       :underline nil
-                      :box nil
-                      :box `(:line-width 1
-                                         :color ,(face-background 'nano-face-default)
-                                         :style nil)
 		                  :inherit nil)
   ;; (when (not (display-graphic-p))
   ;;   (set-face-attribute 'header-line nil
