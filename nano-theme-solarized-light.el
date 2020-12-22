@@ -26,7 +26,7 @@
   ;; Set the colors for the theme.
   (setq nano-color-foreground "#839496")
   (setq nano-color-background "#FDF6E3")
-  (setq nano-color-highlight  "#FAFAFA")
+  (setq nano-color-highlight  "#EEE8D5")
   (setq nano-color-critical   "#DC322F")
   (setq nano-color-salient    "#859900")
   (setq nano-color-strong     "#2AA198")
