@@ -25,7 +25,7 @@
 (require 'nano-theme-nord-dark)
 (require 'nano-theme-solarized-light)
 
-(nano-theme-kimbie-dark)
+(nano-theme-material-light)
 
 (require 'nano-modeline)
 ;; (require 'nano-help)
