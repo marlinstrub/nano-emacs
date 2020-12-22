@@ -16,19 +16,33 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;; ---------------------------------------------------------------------
 (require 'nano-colors)
-
-(setq frame-background-mode   'light)
-
-;; Colors from Material design at https://material.io/
-(defvar nano-color-foreground (material-color "blue-grey 8"  ))
-(defvar nano-color-background "#FFFFFF"                       ) ;; White
-(defvar nano-color-highlight  "#FAFAFA"                       ) ;; Very light grey
-(defvar nano-color-critical   (material-color "amber 9"      ))
-(defvar nano-color-salient    (material-color "indigo 7"     ))
-(defvar nano-color-strong     "#000000"                       ) ;; Black
-(defvar nano-color-popout     (material-color "deep-orange 2"))
-(defvar nano-color-subtle     (material-color "blue-grey 0"  ))
-(defvar nano-color-faded      (material-color "blue-grey 2"  ))
-
 (require 'nano-theme)
+
+(defun nano-theme-material-light ()
+  (interactive)
+  ;; This is a light theme.
+  (setq frame-background-mode   'light)
+
+  ;; Set the colors for the theme.
+  (setq nano-color-foreground (material-color "blue-grey 8"  ))
+  (setq nano-color-background "#FFFFFF"                       ) ;; White
+  (setq nano-color-highlight  "#FAFAFA"                       ) ;; Very light grey
+  (setq nano-color-critical   (material-color "amber 9"      ))
+  (setq nano-color-salient    (material-color "indigo 7"     ))
+  (setq nano-color-strong     "#000000"                       ) ;; Black
+  (setq nano-color-popout     (material-color "deep-orange 2"))
+  (setq nano-color-subtle     (material-color "blue-grey 0"  ))
+  (setq nano-color-faded      (material-color "blue-grey 2"  ))
+
+  ;; Activate the theme.
+  (activate-nano-theme)
+
+  ;; For some reason, the modeline needs to be activated separately.
+  (set-face-attribute 'mode-line nil
+                      :height 11
+                      :underline (face-foreground 'nano-face-faded)
+                      :overline nil
+                      :box nil)
+  (set-face 'mode-line-inactive 'mode-line))
+
 (provide 'nano-theme-material-light)

@@ -26,6 +26,16 @@
 ;;
 ;; ---------------------------------------------------------------------
 
+(defvar nano-color-foreground "#000000")
+(defvar nano-color-background "#FFFFFF")
+(defvar nano-color-highlight  "#FAFAFA")
+(defvar nano-color-critical   "#FF0000")
+(defvar nano-color-salient    "#0000FF")
+(defvar nano-color-strong     "#000000")
+(defvar nano-color-popout     "#FF00FF")
+(defvar nano-color-subtle     "#444444")
+(defvar nano-color-faded      "#888888")
+
 ;; When we set a face, we take care of removing any previous settings
 (defun set-face (face style)
   "Reset a face and make it inherit style."
@@ -69,6 +79,10 @@ regular/bold). IT is generally used for titles, keywords,
 directory, etc."
 :group 'nano)
 
+(defface nano-face-highlight nil
+"Highlight face is used to highlight information."
+:group 'nano)
+
 (defface nano-face-salient nil
 "Salient face is used for information that are important.
 To suggest the information is of the same nature but important,
@@ -90,90 +104,109 @@ It is important to not disturb too strongly the reading of
 information and this can be made by setting a very light
 background color that is barely perceptible."
 :group 'nano)
-              
-(set-foreground-color nano-color-foreground)
-(set-background-color nano-color-background)
 
-(set-face-attribute 'default nil
-                    :foreground (face-foreground 'default)
-                    :background (face-background 'default)
-                    :weight 'light)
-(set-face-attribute 'nano-face-default nil
-                    :foreground (face-foreground 'default)
-                    :background (face-background 'default))
-(set-face-attribute 'nano-face-critical nil
-                    :foreground (face-background 'default)
-                    :background nano-color-critical)
-(set-face-attribute 'nano-face-popout nil
-                    :foreground nano-color-popout)
-(if (display-graphic-p)
+(defun activate-nano-theme ()
+  "Activate the current nano theme."
+  (set-foreground-color nano-color-foreground)
+  (set-background-color nano-color-background)
+
+  (set-face-attribute 'default nil
+                      :foreground (face-foreground 'default)
+                      :background (face-background 'default)
+                      :weight 'light)
+  (set-face-attribute 'nano-face-default nil
+                      :foreground (face-foreground 'default)
+                      :background (face-background 'default))
+  (set-face-attribute 'nano-face-critical nil
+                      :foreground (face-background 'default)
+                      :background nano-color-critical)
+  (set-face-attribute 'nano-face-popout nil
+                      :foreground nano-color-popout)
+  (if (display-graphic-p)
+      (set-face-attribute 'nano-face-strong nil
+                          :foreground (face-foreground 'nano-face-default)
+                          :family "Roboto Mono"
+                          :weight 'medium)
     (set-face-attribute 'nano-face-strong nil
                         :foreground (face-foreground 'nano-face-default)
-                        :family "Roboto Mono"
-                        :weight 'medium)
-  (set-face-attribute 'nano-face-strong nil
-                      :foreground (face-foreground 'nano-face-default)
-                      :weight 'bold))
-(set-face-attribute 'nano-face-salient nil
-                    :foreground nano-color-salient
-                    :weight 'light)
-(set-face-attribute 'nano-face-faded nil
-                    :foreground nano-color-faded
-                    :weight 'light)
-(set-face-attribute 'nano-face-subtle nil
-                    :background nano-color-subtle)
+                        :weight 'bold))
+  (set-face-attribute 'nano-face-salient nil
+                      :foreground nano-color-salient
+                      :weight 'light)
+  (set-face-attribute 'nano-face-faded nil
+                      :foreground nano-color-faded
+                      :weight 'light)
+  (set-face-attribute 'nano-face-subtle nil
+                      :background nano-color-subtle)
 
-
-
-;; mode-line / header-line
-
-(set-face-attribute 'mode-line nil
-                    :height 0.75
-                    :foreground (face-foreground 'nano-face-faded)
-                    :background (face-background 'nano-face-default)
-                    :overline nil
-		            :underline nil
-		            :box nil)
-(set-face-attribute 'mode-line-inactive nil
-                    :height 0.75
-                    :foreground (face-foreground 'nano-face-faded)
-                    :background (face-background 'nano-face-default)
-                    :overline nil 
-                    :underline nil
-		            :inherit nil
-                    :box nil)
-;;(when (display-graphic-p)
+  ;; mode-line / header-line
+  (set-face-attribute 'mode-line nil
+                      :height 0.75
+                      :foreground (face-foreground 'nano-face-faded)
+                      :background (face-background 'nano-face-default)
+                      :overline nil
+		                  :underline nil
+		                  :box nil)
+  (set-face-attribute 'mode-line-inactive nil
+                      :height 0.75
+                      :foreground (face-foreground 'nano-face-faded)
+                      :background (face-background 'nano-face-default)
+                      :overline nil 
+                      :underline nil
+		                  :inherit nil
+                      :box nil)
+  ;;(when (display-graphic-p)
   (set-face-attribute 'header-line nil
-		      :weight 'light
+		                  :weight 'light
                       :foreground (face-foreground 'nano-face-default)
                       :background (face-background 'nano-face-subtle)
-
                       :overline nil
                       :underline nil
                       :box nil
                       :box `(:line-width 1
-                             :color ,(face-background 'nano-face-default)
-                             :style nil)
-		              :inherit nil)
-;; (when (not (display-graphic-p))
-;;   (set-face-attribute 'header-line nil
-;; 		      :weight 'light
-;;                       :foreground (face-foreground 'nano-face-default)
-;;                       :background (face-background 'nano-face-subtle)
-;;                       :inverse-video t
-;;                       :overline nil
-;;                       :underline nil
-;;                       :box nil
-;; 		              :inherit nil))
-  
-;; (set-face-attribute 'internal-border nil
-;;                     :background (face-foreground 'nano-face-default))
-(set-face-attribute 'internal-border nil
-                    :background (face-background 'nano-face-default))
-           
-(if (display-graphic-p)
-    (set-face-attribute 'bold nil :weight 'regular)
-  (set-face-attribute 'bold nil :weight 'bold))
+                                         :color ,(face-background 'nano-face-default)
+                                         :style nil)
+		                  :inherit nil)
+  ;; (when (not (display-graphic-p))
+  ;;   (set-face-attribute 'header-line nil
+  ;; 		      :weight 'light
+  ;;                       :foreground (face-foreground 'nano-face-default)
+  ;;                       :background (face-background 'nano-face-subtle)
+  ;;                       :inverse-video t
+  ;;                       :overline nil
+  ;;                       :underline nil
+  ;;                       :box nil
+  ;; 		              :inherit nil))
+
+  ;; (set-face-attribute 'internal-border nil
+  ;;                     :background (face-foreground 'nano-face-default))
+  (set-face-attribute 'internal-border nil
+                      :background (face-background 'nano-face-default))
+
+  (if (display-graphic-p)
+      (set-face-attribute 'bold nil :weight 'regular)
+    (set-face-attribute 'bold nil :weight 'bold))
+
+  (set-face-attribute 'cursor nil
+                      :background (face-foreground 'nano-face-default))
+  (set-face-attribute 'window-divider nil
+                      :foreground (face-background 'nano-face-default))
+  (set-face-attribute 'window-divider-first-pixel nil
+                      :foreground nano-color-highlight)
+  ;;                    :foreground (face-background 'nano-face-subtle))
+  (set-face-attribute 'window-divider-last-pixel nil
+                      :foreground nano-color-highlight)
+  ;;                    :foreground (face-background 'nano-face-subtle))
+
+
+  ;; Minibuffer / echo area
+  (dolist (buffer (list " *Minibuf-0*" " *Echo Area 0*"
+                        " *Minibuf-1*" " *Echo Area 1*"))
+    (when (get-buffer buffer)
+      (with-current-buffer buffer
+        (face-remap-add-relative 'default 'nano-face-faded)))))
+
+(activate-nano-theme)
 
 ;; Structural
 (set-face 'bold                                     'nano-face-strong)
@@ -185,26 +218,6 @@ background color that is barely perceptible."
 (set-face 'fixed-pitch-serif                       'nano-face-default)
 (set-face 'variable-pitch                          'nano-face-default)
 (set-face 'cursor                                  'nano-face-default)
-
-(set-face-attribute 'cursor nil
-                    :background (face-foreground 'nano-face-default))
-(set-face-attribute 'window-divider nil
-                    :foreground (face-background 'nano-face-default))
-(set-face-attribute 'window-divider-first-pixel nil
-                    :foreground nano-color-highlight)
-;;                    :foreground (face-background 'nano-face-subtle))
-(set-face-attribute 'window-divider-last-pixel nil
-                    :foreground nano-color-highlight)
-;;                    :foreground (face-background 'nano-face-subtle))
-
-
-;; Minibuffer / echo area
-(dolist (buffer (list " *Minibuf-0*" " *Echo Area 0*"
-                      " *Minibuf-1*" " *Echo Area 1*"))
-  (when (get-buffer buffer)
-    (with-current-buffer buffer
-      (face-remap-add-relative 'default 'nano-face-faded))))
-
 
 ;; Semantic
 (set-face 'shadow                                    'nano-face-faded)

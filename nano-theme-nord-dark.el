@@ -16,19 +16,34 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ;; ---------------------------------------------------------------------
 (require 'nano-colors)
-
-(setq frame-background-mode   'dark)
+(require 'nano-theme)
 
 ;; Colors from Nord theme at https://www.nordtheme.com
-(defvar nano-color-foreground (nord-color "snow-storm 3" )) ;; nord  6
-(defvar nano-color-background (nord-color "polar-night 0")) ;; nord  0
-(defvar nano-color-highlight  (nord-color "polar-night 1")) ;; nord  1
-(defvar nano-color-critical   (nord-color "aurora 2"     )) ;; nord 11
-(defvar nano-color-salient    (nord-color "frost 2"      )) ;; nord  9
-(defvar nano-color-strong     (nord-color "snow-storm 3" )) ;; nord  6
-(defvar nano-color-popout     (nord-color "aurora 1"     )) ;; nord 12
-(defvar nano-color-subtle     (nord-color "polar-night 2")) ;; nord  2
-(defvar nano-color-faded      "#616E87"                   ) ;; 
+(defun nano-theme-nord-dark ()
+  (interactive)
+  ;; This is a dark theme.
+  (setq frame-background-mode   'dark)
+  
+  ;; Set the colors for the theme.
+  (setq nano-color-foreground (nord-color "snow-storm 2" )) ;; nord  6
+  (setq nano-color-background (nord-color "polar-night 0")) ;; nord  0
+  (setq nano-color-highlight  (nord-color "polar-night 1")) ;; nord  1
+  (setq nano-color-critical   (nord-color "aurora 2"     )) ;; nord 11
+  (setq nano-color-salient    (nord-color "frost 2"      )) ;; nord  9
+  (setq nano-color-strong     (nord-color "snow-storm 2" )) ;; nord  6
+  (setq nano-color-popout     (nord-color "aurora 1"     )) ;; nord 12
+  (setq nano-color-subtle     (nord-color "polar-night 2")) ;; nord  2
+  (setq nano-color-faded      "#616E87"                   ) ;;
 
-(require 'nano-theme)
+  ;; Activate the theme.
+  (activate-nano-theme)
+
+  ;; For some reason, the modeline needs to be activated separately.
+  (set-face-attribute 'mode-line nil
+                      :height 11
+                      :underline (face-foreground 'nano-face-faded)
+                      :overline nil
+                      :box nil)
+  (set-face 'mode-line-inactive 'mode-line))
+
 (provide 'nano-theme-nord-dark)
