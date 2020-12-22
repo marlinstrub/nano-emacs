@@ -22,8 +22,10 @@
 (add-to-list 'load-path ".")
 
 (require 'nano-layout)
-;; (require 'nano-theme-nord-dark)
+(require 'nano-theme-kimbie-dark)
 (require 'nano-theme-material-light)
+(require 'nano-theme-nord-dark)
+(require 'nano-theme-solarized-light)
 (require 'nano-modeline)
 ;; (require 'nano-help)
 ;; (require 'nano-splash)
