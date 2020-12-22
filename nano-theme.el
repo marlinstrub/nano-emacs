@@ -105,6 +105,55 @@ information and this can be made by setting a very light
 background color that is barely perceptible."
 :group 'nano)
 
+;; Structural
+(set-face 'bold                                     'nano-face-strong)
+(set-face 'italic                                    'nano-face-faded)
+(set-face 'bold-italic                              'nano-face-strong)
+(set-face 'region                                   'nano-face-subtle)
+(set-face 'highlight                                'nano-face-subtle)
+;;(set-face 'fixed-pitch                                     'default)
+(set-face 'fixed-pitch-serif                       'nano-face-default)
+(set-face 'variable-pitch                          'nano-face-default)
+(set-face 'cursor                                  'nano-face-default)
+
+;; Semantic
+(set-face 'shadow                                    'nano-face-faded)
+(set-face 'success                                 'nano-face-salient)
+(set-face 'warning                                  'nano-face-popout)
+(set-face 'error                                  'nano-face-critical)
+(set-face 'match                                    'nano-face-popout)
+
+;; General
+(set-face 'buffer-menu-buffer                       'nano-face-strong)
+(set-face 'minibuffer-prompt                        'nano-face-strong)
+(set-face 'link                                    'nano-face-salient)
+(set-face 'fringe                                    'nano-face-faded)
+(set-face-attribute 'fringe nil
+                       :foreground (face-background 'nano-face-subtle)
+                               :background (face-background 'default))
+(set-face 'isearch                                  'nano-face-strong)
+(set-face 'isearch-fail                              'nano-face-faded)
+(set-face 'lazy-highlight                           'nano-face-subtle)
+(set-face 'trailing-whitespace                      'nano-face-subtle)
+(set-face 'show-paren-match                         'nano-face-popout)
+(set-face 'show-paren-mismatch                           'face-normal)
+(set-face-attribute 'tooltip nil                         :height 0.85)
+(set-face 'secondary-selection                      'nano-face-subtle)
+(set-face 'completions-common-part                  'nano-face-faded)
+(set-face 'completions-first-difference             'nano-face-popout)
+
+;; Programmation mode
+(set-face 'font-lock-comment-face                    'nano-face-faded)
+(set-face 'font-lock-doc-face                        'nano-face-faded)
+(set-face 'font-lock-string-face                    'nano-face-popout)
+(set-face 'font-lock-constant-face                 'nano-face-salient)
+(set-face 'font-lock-warning-face                   'nano-face-popout)
+(set-face 'font-lock-function-name-face             'nano-face-strong)
+(set-face 'font-lock-variable-name-face             'nano-face-strong)
+(set-face 'font-lock-builtin-face                  'nano-face-salient)
+(set-face 'font-lock-type-face                     'nano-face-salient)
+(set-face 'font-lock-keyword-face                  'nano-face-salient)
+
 (defun activate-nano-theme ()
   "Activate the current nano theme."
   (set-foreground-color nano-color-foreground)
@@ -200,88 +249,37 @@ background color that is barely perceptible."
                         " *Minibuf-1*" " *Echo Area 1*"))
     (when (get-buffer buffer)
       (with-current-buffer buffer
-        (face-remap-add-relative 'default 'nano-face-faded)))))
+        (face-remap-add-relative 'default 'nano-face-faded))))
 
+  ;; Highlight line mode
+  (with-eval-after-load 'hl-line
+    (set-face-attribute 'hl-line nil
+                        :background nano-color-highlight))
+
+  ;; Buttons
+  (with-eval-after-load 'cus-edit
+    (set-face-attribute 'custom-button nil
+                        :foreground (face-foreground 'nano-face-faded)
+                        :background (face-background 'nano-face-default)
+                        :box `(:line-width 1
+                                           :color ,(face-foreground 'nano-face-faded)
+                                           :style nil))
+    (set-face-attribute 'custom-button-mouse nil
+                        ;;                      :inherit 'custom-button
+                        :foreground (face-foreground 'nano-face-faded)
+                        :background (face-background 'nano-face-subtle)
+                        :box `(:line-width 1
+                                           :color ,(face-foreground 'nano-face-faded)
+                                           :style nil))
+    (set-face-attribute 'custom-button-pressed nil
+                        :foreground (face-background 'default)
+                        :background (face-foreground 'nano-face-salient)
+                        :inherit 'nano-face-salient
+                        :box `(:line-width 1
+                                           :color ,(face-foreground 'nano-face-salient)
+                                           :style nil)
+                        :inverse-video nil)))
 (activate-nano-theme)
-
-;; Structural
-(set-face 'bold                                     'nano-face-strong)
-(set-face 'italic                                    'nano-face-faded)
-(set-face 'bold-italic                              'nano-face-strong)
-(set-face 'region                                   'nano-face-subtle)
-(set-face 'highlight                                'nano-face-subtle)
-;;(set-face 'fixed-pitch                                     'default)
-(set-face 'fixed-pitch-serif                       'nano-face-default)
-(set-face 'variable-pitch                          'nano-face-default)
-(set-face 'cursor                                  'nano-face-default)
-
-;; Semantic
-(set-face 'shadow                                    'nano-face-faded)
-(set-face 'success                                 'nano-face-salient)
-(set-face 'warning                                  'nano-face-popout)
-(set-face 'error                                  'nano-face-critical)
-(set-face 'match                                    'nano-face-popout)
-
-;; General
-(set-face 'buffer-menu-buffer                       'nano-face-strong)
-(set-face 'minibuffer-prompt                        'nano-face-strong)
-(set-face 'link                                    'nano-face-salient)
-(set-face 'fringe                                    'nano-face-faded)
-(set-face-attribute 'fringe nil
-                       :foreground (face-background 'nano-face-subtle)
-                               :background (face-background 'default))
-(set-face 'isearch                                  'nano-face-strong)
-(set-face 'isearch-fail                              'nano-face-faded)
-(set-face 'lazy-highlight                           'nano-face-subtle)
-(set-face 'trailing-whitespace                      'nano-face-subtle)
-(set-face 'show-paren-match                         'nano-face-popout)
-(set-face 'show-paren-mismatch                           'face-normal)
-(set-face-attribute 'tooltip nil                         :height 0.85)
-(set-face 'secondary-selection                      'nano-face-subtle)
-(set-face 'completions-common-part                  'nano-face-faded)
-(set-face 'completions-first-difference             'nano-face-popout)
-
-;; Programmation mode
-(set-face 'font-lock-comment-face                    'nano-face-faded)
-(set-face 'font-lock-doc-face                        'nano-face-faded)
-(set-face 'font-lock-string-face                    'nano-face-popout)
-(set-face 'font-lock-constant-face                 'nano-face-salient)
-(set-face 'font-lock-warning-face                   'nano-face-popout)
-(set-face 'font-lock-function-name-face             'nano-face-strong)
-(set-face 'font-lock-variable-name-face             'nano-face-strong)
-(set-face 'font-lock-builtin-face                  'nano-face-salient)
-(set-face 'font-lock-type-face                     'nano-face-salient)
-(set-face 'font-lock-keyword-face                  'nano-face-salient)
-
-
-;; Highlight line mode
-(with-eval-after-load 'hl-line
-  (set-face-attribute 'hl-line nil
-                      :background nano-color-highlight))
-
-;; Buttons
-(with-eval-after-load 'cus-edit
-  (set-face-attribute 'custom-button nil
-                      :foreground (face-foreground 'nano-face-faded)
-                      :background (face-background 'nano-face-default)
-                      :box `(:line-width 1
-                             :color ,(face-foreground 'nano-face-faded)
-                             :style nil))
-  (set-face-attribute 'custom-button-mouse nil
-;;                      :inherit 'custom-button
-                      :foreground (face-foreground 'nano-face-faded)
-                      :background (face-background 'nano-face-subtle)
-                      :box `(:line-width 1
-                             :color ,(face-foreground 'nano-face-faded)
-                             :style nil))
-  (set-face-attribute 'custom-button-pressed nil
-                      :foreground (face-background 'default)
-                      :background (face-foreground 'nano-face-salient)
-                      :inherit 'nano-face-salient
-                      :box `(:line-width 1
-                             :color ,(face-foreground 'nano-face-salient)
-                             :style nil)
-                      :inverse-video nil))
 
 ;; Documentation
 (with-eval-after-load 'info
