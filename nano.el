@@ -20,6 +20,9 @@
 ;;; Code:
 (require 'nano-layout)
 (require 'nano-theme)
+(require 'nano-theme-archery-light)
+(require 'nano-theme-firewatch-dark)
+(require 'nano-theme-firewatch-light)
 (require 'nano-theme-kimbie-dark)
 (require 'nano-theme-material-light)
 (require 'nano-theme-nord-dark)
